@@ -32,7 +32,7 @@ export default function Header() {
                     <div className="shrink-0 mr-8">
                         <Link href="/">
                             <Image
-                                src="/logo.avif"
+                                src="/special-graphics/logo.avif"
                                 alt="Special Graphics Logo"
                                 width={200}
                                 height={60}

@@ -19,8 +19,8 @@ export default function Home() {
   const testimonials = [
     {
       id: 1,
-      productImg: "/testimonial-slide-1.avif",
-      avatarImg: "/avatar-richard.avif",
+      productImg: "/special-graphics/testimonial-slide-1.avif",
+      avatarImg: "/special-graphics/avatar-richard.avif",
       name: "Richard Van Balen",
       role: "Founder of Ethique Body, Florida",
       quote:
@@ -28,8 +28,8 @@ export default function Home() {
     },
     {
       id: 2,
-      productImg: "/testimonial-slide-2.avif",
-      avatarImg: "/avatar-ryan.avif",
+      productImg: "/special-graphics/testimonial-slide-2.avif",
+      avatarImg: "/special-graphics/avatar-ryan.avif",
       name: "Ryan Spalding",
       role: "Founder of Jedi Mind Tricks, Texas",
       quote:
@@ -37,8 +37,8 @@ export default function Home() {
     },
     {
       id: 3,
-      productImg: "/testimonial-slide-3.avif",
-      avatarImg: "/avatar-masoud.avif",
+      productImg: "/special-graphics/testimonial-slide-3.avif",
+      avatarImg: "/special-graphics/avatar-masoud.avif",
       name: "Masoud Pajouh",
       role: "Founder of Dibaonline.de & Diba Products, Germany",
       quote:
@@ -60,7 +60,7 @@ export default function Home() {
 
   const hexImages = Array.from(
     { length: 8 },
-    (_, i) => `/feature-logos-hex-${i + 1}.avif`
+    (_, i) => `/special-graphics/feature-logos-hex-${i + 1}.avif`
   );
   const offsetIndexes = [1, 4, 7];
 
@@ -74,7 +74,7 @@ export default function Home() {
         {/* Background - Left Image */}
         <div className="absolute left-0 top-0 w-full md:w-2/3 h-full z-0">
           <Image
-            src="/hero-left.avif"
+            src="/special-graphics/hero-left.avif"
             alt="Hero Left Background"
             fill
             className="object-cover object-left"
@@ -86,7 +86,7 @@ export default function Home() {
         {/* Background - Right Image */}
         <div className="absolute right-0 top-0 w-full md:w-2/3 h-full z-0">
           <Image
-            src="/hero-right.avif"
+            src="/special-graphics/hero-right.avif"
             alt="Hero Right Background"
             fill
             className="object-cover object-right"
@@ -175,11 +175,11 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {[
-              { title: "Logo & Branding Design", img: "/cat-logo.avif" },
-              { title: "Business & Advertising", img: "/cat-business.avif" },
-              { title: "Packaging & Label", img: "/cat-package.avif" },
-              { title: "Website & App Design", img: "/cat-web.avif" },
-              { title: "Art & Illustration", img: "/cat-art.avif" },
+              { title: "Logo & Branding Design", img: "/special-graphics/cat-logo.avif" },
+              { title: "Business & Advertising", img: "/special-graphics/cat-business.avif" },
+              { title: "Packaging & Label", img: "/special-graphics/cat-package.avif" },
+              { title: "Website & App Design", img: "/special-graphics/cat-web.avif" },
+              { title: "Art & Illustration", img: "/special-graphics/cat-art.avif" },
             ].map((item, index) => (
               <div key={index} className="group cursor-pointer">
                 <div className="aspect-square bg-gray-100 overflow-hidden rounded-md mb-3 shadow-sm group-hover:shadow-md transition-all">
@@ -227,7 +227,7 @@ export default function Home() {
           <div className="md:w-1/2 relative">
             <div className="relative z-10 flex justify-center">
               <Image
-                src="/feature-energy.avif"
+                src="/special-graphics/feature-energy.avif"
                 alt="Energy Drink Design"
                 width={600}
                 height={500}
@@ -321,7 +321,7 @@ export default function Home() {
           </div>
           <div className="md:w-1/2 relative flex justify-center">
             <Image
-              src="/feature-podcast.avif"
+              src="/special-graphics/feature-podcast.avif"
               alt="Podcast Design"
               width={500}
               height={500}
@@ -416,8 +416,8 @@ export default function Home() {
                 key={index}
                 onClick={() => setCurrentSlide(index)}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${currentSlide === index
-                    ? "bg-black scale-110"
-                    : "bg-transparent border border-black hover:bg-gray-200"
+                  ? "bg-black scale-110"
+                  : "bg-transparent border border-black hover:bg-gray-200"
                   }`}
               />
             ))}
