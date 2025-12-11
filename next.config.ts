@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   basePath: '/special-graphics',
-  assetPrefix: '/special-graphics/',
 };
 
 export default nextConfig;
