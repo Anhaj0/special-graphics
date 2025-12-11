@@ -9,7 +9,7 @@ export default function Hero() {
             {/* Background - Left Image (Fades to right) */}
             <div className="absolute left-0 top-0 w-full md:w-2/3 h-full z-0">
                 <Image
-                    src="/hero-left.avif"
+                    src="/special-graphics/hero-left.avif"
                     alt="Hero Left Background"
                     fill
                     className="object-cover object-left"
@@ -22,7 +22,7 @@ export default function Hero() {
             {/* Background - Right Image (Fades to left) */}
             <div className="absolute right-0 top-0 w-full md:w-2/3 h-full z-0">
                 <Image
-                    src="/hero-right.avif"
+                    src="/special-graphics/hero-right.avif"
                     alt="Hero Right Background"
                     fill
                     className="object-cover object-right"

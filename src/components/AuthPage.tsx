@@ -421,7 +421,7 @@ const App = () => {
             relative root path (/logo.png), assuming the file is in the /public directory.
           */}
           <img
-            src="/special-graphics-logo.svg" // <--- UPDATED PATH FOR NEXT.JS PUBLIC FOLDER
+            src="/special-graphics/special-graphics-logo.svg" // <--- UPDATED PATH FOR NEXT.JS PUBLIC FOLDER
             alt="Company Logo"
             className="mx-auto mb-8" // Centering and margin-bottom for spacing
             style={{ height: '50px', width: '150px' }} // Explicit dimensions
