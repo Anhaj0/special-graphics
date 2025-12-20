@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { Search } from "lucide-react";
+import logo from "../../public/logo.avif";
 
 export default function Header() {
     return (
@@ -32,7 +33,7 @@ export default function Header() {
                     <div className="shrink-0 mr-8">
                         <Link href="/">
                             <Image
-                                src="/logo.avif"
+                                src={logo}
                                 alt="Special Graphics Logo"
                                 width={200}
                                 height={60}

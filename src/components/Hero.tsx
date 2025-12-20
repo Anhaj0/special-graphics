@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import Image from "next/image";
+import heroLeft from "../../public/hero-left.avif";
+import heroRight from "../../public/hero-right.avif";
 
 export default function Hero() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const images = [
-        { src: "/hero-left.avif", position: "object-left" },
-        { src: "/hero-right.avif", position: "object-right" }
+        { src: heroLeft, position: "object-left" },
+        { src: heroRight, position: "object-right" }
     ];
 
     useEffect(() => {
@@ -25,7 +27,7 @@ export default function Hero() {
             <div className="absolute inset-0 w-full h-full z-0">
                 {images.map((image, index) => (
                     <div
-                        key={image.src}
+                        key={index}
                         className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
                             }`}
                     >

@@ -12,6 +12,25 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 
+// Import Images
+import testimonial1 from "../../public/testimonial-slide-1.avif";
+import testimonial2 from "../../public/testimonial-slide-2.avif";
+import testimonial3 from "../../public/testimonial-slide-3.avif";
+import avatarRichard from "../../public/avatar-richard.avif";
+import avatarRyan from "../../public/avatar-ryan.avif";
+import avatarMasoud from "../../public/avatar-masoud.avif";
+import featureEnergy from "../../public/feature-energy.avif";
+import featurePodcast from "../../public/feature-podcast.avif";
+
+import hex1 from "../../public/feature-logos-hex-1.avif";
+import hex2 from "../../public/feature-logos-hex-2.avif";
+import hex3 from "../../public/feature-logos-hex-3.avif";
+import hex4 from "../../public/feature-logos-hex-4.avif";
+import hex5 from "../../public/feature-logos-hex-5.avif";
+import hex6 from "../../public/feature-logos-hex-6.avif";
+import hex7 from "../../public/feature-logos-hex-7.avif";
+import hex8 from "../../public/feature-logos-hex-8.avif";
+
 export default function Home() {
   // Carousel State
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -20,8 +39,8 @@ export default function Home() {
   const testimonials = [
     {
       id: 1,
-      productImg: "/testimonial-slide-1.avif",
-      avatarImg: "/avatar-richard.avif",
+      productImg: testimonial1,
+      avatarImg: avatarRichard,
       name: "Richard Van Balen",
       role: "Founder of Ethique Body, Florida",
       quote:
@@ -29,8 +48,8 @@ export default function Home() {
     },
     {
       id: 2,
-      productImg: "/testimonial-slide-2.avif",
-      avatarImg: "/avatar-ryan.avif",
+      productImg: testimonial2,
+      avatarImg: avatarRyan,
       name: "Ryan Spalding",
       role: "Founder of Jedi Mind Tricks, Texas",
       quote:
@@ -38,8 +57,8 @@ export default function Home() {
     },
     {
       id: 3,
-      productImg: "/testimonial-slide-3.avif",
-      avatarImg: "/avatar-masoud.avif",
+      productImg: testimonial3,
+      avatarImg: avatarMasoud,
       name: "Masoud Pajouh",
       role: "Founder of Dibaonline.de & Diba Products, Germany",
       quote:
@@ -59,10 +78,9 @@ export default function Home() {
     );
   };
 
-  const hexImages = Array.from(
-    { length: 8 },
-    (_, i) => `/feature-logos-hex-${i + 1}.avif`
-  );
+  const hexImages = [
+    hex1, hex2, hex3, hex4, hex5, hex6, hex7, hex8
+  ];
   const offsetIndexes = [1, 4, 7];
 
   return (
@@ -157,7 +175,7 @@ export default function Home() {
           <div className="md:w-1/2 relative">
             <div className="relative z-10 flex justify-center">
               <Image
-                src="/feature-energy.avif"
+                src={featureEnergy}
                 alt="Energy Drink Design"
                 width={600}
                 height={500}
@@ -296,7 +314,7 @@ export default function Home() {
           </div>
           <div className="md:w-1/2 relative flex justify-center">
             <Image
-              src="/feature-podcast.avif"
+              src={featurePodcast}
               alt="Podcast Design"
               width={500}
               height={500}
