@@ -1,39 +1,49 @@
-"use client";
+'use client';
 
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 
 export default function Hero() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const images = [
+        { src: "/hero-left.avif", position: "object-left" },
+        { src: "/hero-right.avif", position: "object-right" }
+    ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <section className="relative bg-[#0a0015] text-white overflow-hidden min-h-[500px] md:min-h-[600px] flex items-center z-10">
 
-            {/* Background - Left Image (Fades to right) */}
-            <div className="absolute left-0 top-0 w-full md:w-2/3 h-full z-0">
-                <Image
-                    src="/special-graphics/hero-left.avif"
-                    alt="Hero Left Background"
-                    fill
-                    className="object-cover object-left"
-                    priority
-                />
-                {/* Gradient Mask to fade into center */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0a0015] w-full h-full"></div>
-            </div>
-
-            {/* Background - Right Image (Fades to left) */}
-            <div className="absolute right-0 top-0 w-full md:w-2/3 h-full z-0">
-                <Image
-                    src="/special-graphics/hero-right.avif"
-                    alt="Hero Right Background"
-                    fill
-                    className="object-cover object-right"
-                    priority
-                />
-                {/* Gradient Mask to fade into center */}
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#0a0015] w-full h-full"></div>
+            {/* Background Slideshow */}
+            <div className="absolute inset-0 w-full h-full z-0">
+                {images.map((image, index) => (
+                    <div
+                        key={image.src}
+                        className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
+                            }`}
+                    >
+                        <Image
+                            src={image.src}
+                            alt="Hero Background"
+                            fill
+                            className={`object-cover ${image.position}`}
+                            priority={index === 0}
+                        />
+                        {/* Gradient Mask to fade into center (optional, but keep for style consistency if desired, or just dark overlay) */}
+                        <div className="absolute inset-0 bg-black/40"></div>
+                    </div>
+                ))}
             </div>
 
             {/* Dark overlay for mobile readability */}
-            <div className="absolute inset-0 bg-[#0a0015]/40 md:bg-transparent z-0 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-[#0a0015]/20 md:bg-transparent z-0 pointer-events-none"></div>
 
             {/* Content */}
             <div className="container mx-auto px-4 relative z-10 text-center flex flex-col items-center pt-10 pb-32">

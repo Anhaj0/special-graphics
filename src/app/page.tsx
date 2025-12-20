@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   // Carousel State
@@ -19,8 +20,8 @@ export default function Home() {
   const testimonials = [
     {
       id: 1,
-      productImg: "/special-graphics/testimonial-slide-1.avif",
-      avatarImg: "/special-graphics/avatar-richard.avif",
+      productImg: "/testimonial-slide-1.avif",
+      avatarImg: "/avatar-richard.avif",
       name: "Richard Van Balen",
       role: "Founder of Ethique Body, Florida",
       quote:
@@ -28,8 +29,8 @@ export default function Home() {
     },
     {
       id: 2,
-      productImg: "/special-graphics/testimonial-slide-2.avif",
-      avatarImg: "/special-graphics/avatar-ryan.avif",
+      productImg: "/testimonial-slide-2.avif",
+      avatarImg: "/avatar-ryan.avif",
       name: "Ryan Spalding",
       role: "Founder of Jedi Mind Tricks, Texas",
       quote:
@@ -37,8 +38,8 @@ export default function Home() {
     },
     {
       id: 3,
-      productImg: "/special-graphics/testimonial-slide-3.avif",
-      avatarImg: "/special-graphics/avatar-masoud.avif",
+      productImg: "/testimonial-slide-3.avif",
+      avatarImg: "/avatar-masoud.avif",
       name: "Masoud Pajouh",
       role: "Founder of Dibaonline.de & Diba Products, Germany",
       quote:
@@ -60,7 +61,7 @@ export default function Home() {
 
   const hexImages = Array.from(
     { length: 8 },
-    (_, i) => `/special-graphics/feature-logos-hex-${i + 1}.avif`
+    (_, i) => `/feature-logos-hex-${i + 1}.avif`
   );
   const offsetIndexes = [1, 4, 7];
 
@@ -70,79 +71,8 @@ export default function Home() {
       <Header />
 
       {/* ================= HERO SECTION ================= */}
-      <section className="relative bg-[#0a0015] text-white overflow-hidden min-h-[500px] md:min-h-[600px] flex items-center z-10">
-        {/* Background - Left Image */}
-        <div className="absolute left-0 top-0 w-full md:w-2/3 h-full z-0">
-          <Image
-            src="/special-graphics/hero-left.avif"
-            alt="Hero Left Background"
-            fill
-            className="object-cover object-left"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0a0015] w-full h-full" />
-        </div>
 
-        {/* Background - Right Image */}
-        <div className="absolute right-0 top-0 w-full md:w-2/3 h-full z-0">
-          <Image
-            src="/special-graphics/hero-right.avif"
-            alt="Hero Right Background"
-            fill
-            className="object-cover object-right"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#0a0015] w-full h-full" />
-        </div>
-
-        {/* Dark overlay for mobile */}
-        <div className="absolute inset-0 bg-[#0a0015]/40 md:bg-transparent z-0 pointer-events-none" />
-
-        {/* Content */}
-        <div className="max-w-[1200px] mx-auto px-4 lg:px-8 relative z-10 text-center flex flex-col items-center pt-10 pb-32">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight drop-shadow-lg">
-            Start Your Dream Business with <br />
-            <span className="text-white">World Class Designs</span>
-          </h1>
-
-          <p className="text-gray-200 mb-8 max-w-2xl text-base md:text-lg drop-shadow-md">
-            No matter what your business needs, we can connect you with a
-            creative expert. What do you need to design?
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10 text-sm text-gray-300">
-            <span className="py-1">Popular :</span>
-            <span className="bg-white/10 backdrop-blur-sm px-3 py-1 rounded text-yellow-100 border border-yellow-500/30">
-              Brand Design
-            </span>
-            <span className="bg-white/10 backdrop-blur-sm px-3 py-1 rounded text-yellow-100 border border-yellow-500/30">
-              Web Design
-            </span>
-            <span className="bg-white/10 backdrop-blur-sm px-3 py-1 rounded text-yellow-100 border border-yellow-500/30">
-              Package Design
-            </span>
-          </div>
-
-          <button className="bg-[#ff00cc] hover:bg-[#d900ad] text-white font-bold py-3 px-8 md:py-4 md:px-10 rounded shadow-[0_0_20px_rgba(255,0,204,0.4)] transition-all">
-            Hire Us Now!
-          </button>
-        </div>
-
-        {/* Decorative Wave Bottom */}
-        <div className="absolute bottom-0 w-full h-16 z-20">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320"
-            className="w-full h-full absolute bottom-0 translate-y-1/2"
-          >
-            <path
-              fill="#ffffff"
-              fillOpacity="1"
-              d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            ></path>
-          </svg>
-        </div>
-      </section>
+      <Hero />
 
       {/* ================= CATEGORIES SECTION ================= */}
       <section className="py-16 md:py-20 bg-white relative z-30">
@@ -175,11 +105,11 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {[
-              { title: "Logo & Branding Design", img: "/special-graphics/cat-logo.avif" },
-              { title: "Business & Advertising", img: "/special-graphics/cat-business.avif" },
-              { title: "Packaging & Label", img: "/special-graphics/cat-package.avif" },
-              { title: "Website & App Design", img: "/special-graphics/cat-web.avif" },
-              { title: "Art & Illustration", img: "/special-graphics/cat-art.avif" },
+              { title: "Logo & Branding Design", img: "/cat-logo.avif" },
+              { title: "Business & Advertising", img: "/cat-business.avif" },
+              { title: "Packaging & Label", img: "/cat-package.avif" },
+              { title: "Website & App Design", img: "/cat-web.avif" },
+              { title: "Art & Illustration", img: "/cat-art.avif" },
             ].map((item, index) => (
               <div key={index} className="group cursor-pointer">
                 <div className="aspect-square bg-gray-100 overflow-hidden rounded-md mb-3 shadow-sm group-hover:shadow-md transition-all">
@@ -227,7 +157,7 @@ export default function Home() {
           <div className="md:w-1/2 relative">
             <div className="relative z-10 flex justify-center">
               <Image
-                src="/special-graphics/feature-energy.avif"
+                src="/feature-energy.avif"
                 alt="Energy Drink Design"
                 width={600}
                 height={500}
@@ -242,31 +172,76 @@ export default function Home() {
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-[1200px] mx-auto px-4 lg:px-8 flex flex-col-reverse md:flex-row items-center gap-12">
           {/* Hex grid */}
-          <div className="md:w-1/2 flex justify-center">
-            <div className="grid grid-cols-3 gap-4 md:gap-5">
-              {hexImages.map((src, idx) => (
-                <div
-                  key={src}
-                  className={`relative w-24 h-28 md:w-32 md:h-36 ${offsetIndexes.includes(idx) ? "mt-6 md:mt-8" : ""
-                    }`}
-                >
-                  <div
-                    className="w-full h-full overflow-hidden shadow-md bg-white"
-                    style={{
-                      clipPath:
-                        "polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%)",
-                    }}
-                  >
-                    <Image
-                      src={src}
-                      alt={`Logo hex ${idx + 1}`}
-                      width={300}
-                      height={340}
-                      className="w-full h-full object-cover"
-                    />
+
+          {/* Hex grid */}
+          {/* Hex grid */}
+          <div className="md:w-1/2 flex justify-center items-center">
+            <div className="flex justify-center items-start">
+              {/* Column 1 (3 items) */}
+              <div className="flex flex-col -space-y-4">
+                {[0, 3, 6].map((i) => hexImages[i] && (
+                  <div key={i} className="group relative w-32 h-32 z-10 hover:z-20">
+                    <div
+                      className="w-full h-full overflow-hidden shadow-sm filter drop-shadow-md bg-white"
+                      style={{
+                        clipPath: "polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)",
+                      }}
+                    >
+                      <Image
+                        src={hexImages[i]}
+                        alt={`Logo hex ${i + 1}`}
+                        width={300}
+                        height={300}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              {/* Column 2 (2 items, Staggered Down) */}
+              <div className="flex flex-col -space-y-4 mt-16 -ml-5">
+                {[1, 4].map((i) => hexImages[i] && (
+                  <div key={i} className="group relative w-32 h-32 z-10 hover:z-20">
+                    <div
+                      className="w-full h-full overflow-hidden shadow-sm filter drop-shadow-md bg-white"
+                      style={{
+                        clipPath: "polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)",
+                      }}
+                    >
+                      <Image
+                        src={hexImages[i]}
+                        alt={`Logo hex ${i + 1}`}
+                        width={300}
+                        height={300}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Column 3 (3 items) */}
+              <div className="flex flex-col -space-y-4 -ml-5">
+                {[2, 5, 7].map((i) => hexImages[i] && (
+                  <div key={i} className="group relative w-32 h-32 z-10 hover:z-20">
+                    <div
+                      className="w-full h-full overflow-hidden shadow-sm filter drop-shadow-md bg-white"
+                      style={{
+                        clipPath: "polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)",
+                      }}
+                    >
+                      <Image
+                        src={hexImages[i]}
+                        alt={`Logo hex ${i + 1}`}
+                        width={300}
+                        height={300}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -321,7 +296,7 @@ export default function Home() {
           </div>
           <div className="md:w-1/2 relative flex justify-center">
             <Image
-              src="/special-graphics/feature-podcast.avif"
+              src="/feature-podcast.avif"
               alt="Podcast Design"
               width={500}
               height={500}

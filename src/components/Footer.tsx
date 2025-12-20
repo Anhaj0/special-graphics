@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <footer className="bg-[#030014] text-white pt-16 md:pt-20 pb-6 border-t border-gray-900">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-16 text-sm">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-16 text-sm">
                     {/* Col 1 */}
                     <div className="flex flex-col gap-4">
                         <h4 className="font-bold text-base mb-2">Company</h4>
@@ -57,6 +57,19 @@ export default function Footer() {
                         <Link href="/designer/basics" className="text-gray-400 hover:text-white transition-colors">Basics of Graphic Design</Link>
                         <Link href="/help" className="text-gray-400 hover:text-white transition-colors">Help</Link>
                         <Link href="/become-designer" className="text-gray-400 hover:text-white transition-colors">Become a Designer</Link>
+                    </div>
+
+                    {/* Col 6: Sitemap / All Pages */}
+                    <div className="flex flex-col gap-4">
+                        <h4 className="font-bold text-base mb-2">Sitemap</h4>
+                        <Link href="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
+                        <Link href="/auth" className="text-gray-400 hover:text-white transition-colors">Login / Auth</Link>
+                        <Link href="/categories" className="text-gray-400 hover:text-white transition-colors">Categories</Link>
+                        <Link href="/find-designer" className="text-gray-400 hover:text-white transition-colors">Find a Designer</Link>
+                        <Link href="/how-it-works" className="text-gray-400 hover:text-white transition-colors">How It Works</Link>
+                        <Link href="/inspirations" className="text-gray-400 hover:text-white transition-colors">Inspirations</Link>
+                        <Link href="/submit-files" className="text-gray-400 hover:text-white transition-colors">Submit Files</Link>
+                        <Link href="/winner-form" className="text-gray-400 hover:text-white transition-colors">Winner Form</Link>
                     </div>
                 </div>
 

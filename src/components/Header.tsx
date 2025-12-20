@@ -32,7 +32,7 @@ export default function Header() {
                     <div className="shrink-0 mr-8">
                         <Link href="/">
                             <Image
-                                src="/special-graphics/logo.avif"
+                                src="/logo.avif"
                                 alt="Special Graphics Logo"
                                 width={200}
                                 height={60}
@@ -46,6 +46,7 @@ export default function Header() {
                     <nav className="hidden xl:flex flex-1 items-center justify-between text-sm font-medium text-gray-700 h-full">
 
                         <Link href="/contests" className="hover:text-pink-600 h-full flex items-center">Design Contests</Link>
+                        <Link href="/find-designer" className="hover:text-pink-600 h-full flex items-center">Find a Designer</Link>
 
                         {/* DROPDOWN 1: Browse Categories */}
                         <div className="relative group h-full flex items-center">
@@ -78,7 +79,7 @@ export default function Header() {
                         </div>
 
                         <Link href="/studio" className="hover:text-pink-600 h-full flex items-center">Special Studio</Link>
-                        <Link href="/inspiration" className="hover:text-pink-600 h-full flex items-center">Inspiration</Link>
+                        <Link href="/inspirations" className="hover:text-pink-600 h-full flex items-center">Inspirations</Link>
                         <Link href="/how-it-works" className="hover:text-pink-600 h-full flex items-center">How It Works</Link>
                         <Link href="/buy" className="hover:text-pink-600 h-full flex items-center">Buy Digital Graphics</Link>
                         <Link href="/faqs" className="hover:text-pink-600 h-full flex items-center">FAQs</Link>
