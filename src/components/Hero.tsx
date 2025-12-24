@@ -1,71 +1,81 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 import heroLeft from "../../public/hero-left.avif";
 import heroRight from "../../public/hero-right.avif";
 
 export default function Hero() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const images = [
+        { src: heroLeft, position: "object-left" },
+        { src: heroRight, position: "object-right" }
+    ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
-        <section className="relative bg-[#000000] text-white overflow-hidden min-h-[550px] md:min-h-[650px] flex items-center z-10">
+        <section className="relative bg-[#0a0015] text-white overflow-hidden min-h-[500px] md:min-h-[600px] flex items-center z-10">
 
-            {/* Left Image */}
-            <div className="absolute left-0 top-0 bottom-0 w-[35%] z-0 hidden lg:block">
-                <Image
-                    src={heroLeft}
-                    alt="Hero Left Decoration"
-                    fill
-                    className="object-contain object-left"
-                    priority
-                />
+            {/* Background Slideshow */}
+            <div className="absolute inset-0 w-full h-full z-0">
+                {images.map((image, index) => (
+                    <div
+                        key={index}
+                        className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
+                            }`}
+                    >
+                        <Image
+                            src={image.src}
+                            alt="Hero Background"
+                            fill
+                            className={`object-cover ${image.position}`}
+                            priority={index === 0}
+                        />
+                        {/* Gradient Mask to fade into center (optional, but keep for style consistency if desired, or just dark overlay) */}
+                        <div className="absolute inset-0 bg-black/40"></div>
+                    </div>
+                ))}
             </div>
 
-            {/* Right Image */}
-            <div className="absolute right-0 top-0 bottom-0 w-[40%] z-0 hidden lg:block">
-                <Image
-                    src={heroRight}
-                    alt="Hero Right Decoration"
-                    fill
-                    className="object-contain object-right"
-                    priority
-                />
-            </div>
-
-            {/* Dark overlay for mobile / Gradient fade for center */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-black z-0 lg:hidden"></div>
-            <div className="absolute inset-0 bg-black/30 z-0"></div>
+            {/* Dark overlay for mobile readability */}
+            <div className="absolute inset-0 bg-[#0a0015]/20 md:bg-transparent z-0 pointer-events-none"></div>
 
             {/* Content */}
-            <div className="container mx-auto px-4 relative z-10 text-center flex flex-col items-center">
-                <div className="max-w-3xl">
-                    <p className="text-xl md:text-2xl font-normal mb-2 text-white/90">
-                        Start Your Dream Business with
-                    </p>
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 leading-[1.1] tracking-tight">
-                        World Class <br /> Designs
-                    </h1>
+            <div className="container mx-auto px-4 relative z-10 text-center flex flex-col items-center pt-10 pb-32">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight drop-shadow-lg">
+                    Start Your Dream Business with <br />
+                    <span className="text-white">World Class Designs</span>
+                </h1>
 
-                    <div className="space-y-4 mb-10">
-                        <p className="text-gray-300 text-lg md:text-xl font-medium max-w-xl mx-auto leading-relaxed">
-                            No matter what your business needs, we can connect you with a creative expert. What do you need to design?
-                        </p>
+                <p className="text-gray-200 mb-8 max-w-2xl text-base md:text-lg drop-shadow-md">
+                    No matter what your business needs, we can connect you with a creative expert. What do you need to design?
+                </p>
 
-                        <div className="flex flex-wrap justify-center items-center gap-3 text-sm md:text-base text-gray-400">
-                            <span className="font-semibold text-white/70">Popular :</span>
-                            <button className="px-4 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition-colors">Brand Design</button>
-                            <button className="px-4 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition-colors">Web Design</button>
-                            <button className="px-4 py-1.5 rounded-full border border-white/20 hover:bg-white/10 transition-colors">Package Design</button>
-                        </div>
-                    </div>
-
-                    <button className="bg-[#007bff] hover:bg-[#0056b3] text-white font-bold py-4 px-12 rounded-sm text-lg shadow-lg transition-all transform hover:scale-105 active:scale-95">
-                        Hire Us Now!
-                    </button>
+                <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10 text-sm text-gray-300">
+                    <span className="py-1">Popular :</span>
+                    <span className="bg-white/10 backdrop-blur-sm px-3 py-1 rounded text-yellow-100 border border-yellow-500/30">Brand Design</span>
+                    <span className="bg-white/10 backdrop-blur-sm px-3 py-1 rounded text-yellow-100 border border-yellow-500/30">Web Design</span>
+                    <span className="bg-white/10 backdrop-blur-sm px-3 py-1 rounded text-yellow-100 border border-yellow-500/30">Package Design</span>
                 </div>
+
+                <button className="bg-[#ff00cc] hover:bg-[#d900ad] text-white font-bold py-3 px-8 md:py-4 md:px-10 rounded shadow-[0_0_20px_rgba(255,0,204,0.4)] transition-all cursor-pointer">
+                    Hire Us Now!
+                </button>
             </div>
 
-            {/* Bottom Curve Divider */}
-            <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none z-20"></div>
+            {/* Decorative Wave Bottom */}
+            <div className="absolute bottom-0 w-full h-16 z-20">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-full absolute bottom-0 translate-y-1/2">
+                    <path fill="#ffffff" fillOpacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
+            </div>
         </section>
     );
 }
-
