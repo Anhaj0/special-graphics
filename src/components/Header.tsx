@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 
 // Navigation items configuration
@@ -25,14 +26,19 @@ export default function Header() {
                     {/* Logo (Left Side) */}
                     <div className="flex-shrink-0">
                         <Link href="/" className="block">
-                            <span className="font-great-vibes text-2xl md:text-3xl text-gray-900 tracking-tight">
-                                Special Graphics
-                            </span>
+                            <Image
+                                src="/logo.avif"
+                                alt="Special Graphics"
+                                width={180}
+                                height={50}
+                                className="h-10 md:h-12 w-auto object-contain"
+                                priority
+                            />
                         </Link>
                     </div>
 
-                    {/* Navigation Menu (Center) - Hidden on mobile */}
-                    <div className="hidden lg:flex items-center justify-center flex-1 px-8">
+                    {/* Navigation Menu (Left-aligned near logo) - Hidden on mobile */}
+                    <div className="hidden lg:flex items-center flex-1 ml-12">
                         <div className="flex items-center gap-6 xl:gap-8">
                             {navItems.map((item) => (
                                 <div key={item.label} className="relative">
