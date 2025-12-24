@@ -1,99 +1,134 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
-import { Search } from "lucide-react";
-import logo from "../../public/logo.avif";
+import { useState } from 'react';
+import Link from 'next/link';
+import { Menu, X } from 'lucide-react';
+
+// Navigation items configuration
+const navItems = [
+    { label: 'How it works', href: '/how-it-works' },
+    { label: 'Categories', href: '/categories' },
+    { label: 'Find a Designer', href: '/find-designer' },
+    { label: 'Special Studio', href: '/studio', badge: 'NEW' },
+    { label: 'Courses', href: '/courses' },
+    { label: 'Showcase', href: '/showcase' },
+];
 
 export default function Header() {
-    return (
-        <header className="w-full relative z-50">
-            {/* Top Bar */}
-            <div className="border-b border-gray-200 py-2 text-xs text-gray-600 bg-white relative z-50">
-                <div className="container mx-auto px-4 flex justify-between items-center">
-                    <div className="flex gap-4">
-                        <Link href="/about" className="hover:text-black">About Us</Link>
-                        <Link href="/support" className="hover:text-black">Customer Support</Link>
-                    </div>
-                    <div className="text-center hidden sm:block">Welcome to Special Graphics!</div>
-                    <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center">
-                            <span className="text-gray-500 text-[10px]">👤</span>
-                        </div>
-                        <Link href="/auth" className="hover:text-black font-medium">Log In</Link>
-                    </div>
-                </div>
-            </div>
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-            {/* Main Nav */}
-            <div className="bg-white shadow-sm sticky top-0 relative z-40">
-                <div className="container mx-auto px-4 flex items-center h-[80px]">
-                    {/* Logo */}
-                    <div className="shrink-0 mr-8">
-                        <Link href="/">
-                            <Image
-                                src={logo}
-                                alt="Special Graphics Logo"
-                                width={200}
-                                height={60}
-                                className="w-auto h-12 md:h-14 object-contain"
-                                priority
-                            />
+    return (
+        <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+            <nav className="w-full px-6 md:px-8 lg:px-10">
+                <div className="flex items-center justify-between h-16 lg:h-[72px]">
+
+                    {/* Logo (Left Side) */}
+                    <div className="flex-shrink-0">
+                        <Link href="/" className="block">
+                            <span className="font-great-vibes text-2xl md:text-3xl text-gray-900 tracking-tight">
+                                Special Graphics
+                            </span>
                         </Link>
                     </div>
 
-                    {/* Navigation */}
-                    <nav className="hidden xl:flex flex-1 items-center justify-between text-sm font-medium text-gray-700 h-full">
-
-                        <Link href="/contests" className="hover:text-pink-600 h-full flex items-center">Design Contests</Link>
-                        <Link href="/find-designer" className="hover:text-pink-600 h-full flex items-center">Find a Designer</Link>
-
-                        {/* DROPDOWN 1: Browse Categories */}
-                        <div className="relative group h-full flex items-center">
-                            <Link href="/categories" className="hover:text-pink-600 flex items-center gap-1 h-full focus:outline-none cursor-pointer">
-                                Browse categories
-                            </Link>
-                            {/* Dropdown Menu */}
-                            <div className="absolute top-full left-0 w-60 bg-white shadow-lg rounded-b-md py-2 hidden group-hover:block border-t-2 border-transparent group-hover:border-pink-600 transition-all duration-200 animate-in fade-in slide-in-from-top-2">
-                                <Link href="/categories" className="block px-4 py-2.5 hover:bg-gray-50 hover:text-pink-600 text-gray-600 font-bold border-b border-gray-100">All Categories</Link>
-                                <Link href="/category/logo-brand" className="block px-4 py-2.5 hover:bg-gray-50 hover:text-pink-600 text-gray-600">Logo & Brand</Link>
-                                <Link href="/category/packaging-label" className="block px-4 py-2.5 hover:bg-gray-50 hover:text-pink-600 text-gray-600">Packaging & Label</Link>
-                                <Link href="/category/magazine-book-covers" className="block px-4 py-2.5 hover:bg-gray-50 hover:text-pink-600 text-gray-600">Magazine & Book Covers</Link>
-                                <Link href="/category/web-app-design" className="block px-4 py-2.5 hover:bg-gray-50 hover:text-pink-600 text-gray-600">Web & App Design</Link>
-                                <Link href="/category/business-advertising" className="block px-4 py-2.5 hover:bg-gray-50 hover:text-pink-600 text-gray-600">Business & Advertising</Link>
-                                <Link href="/category/clothing-merchandise" className="block px-4 py-2.5 hover:bg-gray-50 hover:text-pink-600 text-gray-600">Clothing & Merchandise</Link>
-                            </div>
+                    {/* Navigation Menu (Center) - Hidden on mobile */}
+                    <div className="hidden lg:flex items-center justify-center flex-1 px-8">
+                        <div className="flex items-center gap-6 xl:gap-8">
+                            {navItems.map((item) => (
+                                <div key={item.label} className="relative">
+                                    <Link
+                                        href={item.href}
+                                        className="relative text-sm font-medium text-gray-800 hover:text-gray-900 transition-colors duration-200 whitespace-nowrap"
+                                    >
+                                        {/* NEW Badge */}
+                                        {item.badge && (
+                                            <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white text-[9px] font-semibold px-1.5 py-0.5 rounded-sm uppercase tracking-wide">
+                                                {item.badge}
+                                            </span>
+                                        )}
+                                        {item.label}
+                                    </Link>
+                                </div>
+                            ))}
                         </div>
+                    </div>
 
-                        {/* DROPDOWN 2: Become a Designer */}
-                        <div className="relative group h-full flex items-center">
-                            <button className="hover:text-pink-600 flex items-center gap-1 h-full focus:outline-none cursor-pointer">
-                                Become a Designer
-                            </button>
-                            {/* Dropdown Menu */}
-                            <div className="absolute top-full left-0 w-64 bg-white shadow-lg rounded-b-md py-2 hidden group-hover:block border-t-2 border-transparent group-hover:border-pink-600 transition-all duration-200 animate-in fade-in slide-in-from-top-2">
-                                <Link href="/designer/basics" className="block px-4 py-2.5 hover:bg-gray-50 hover:text-pink-600 text-gray-600">Basics of Graphic Design</Link>
-                                <Link href="/designer/advance-logo" className="block px-4 py-2.5 hover:bg-gray-50 hover:text-pink-600 text-gray-600">Advance Logo Design Program</Link>
-                                <Link href="/designer/advance-package" className="block px-4 py-2.5 hover:bg-gray-50 hover:text-pink-600 text-gray-600">Advance Package Design Program</Link>
-                            </div>
-                        </div>
+                    {/* Action Buttons (Right Side) */}
+                    <div className="flex items-center gap-4 md:gap-5">
+                        {/* Sign In - Hidden on mobile */}
+                        <Link
+                            href="/auth"
+                            className="hidden sm:block text-sm font-medium text-gray-800 hover:text-gray-900 transition-colors duration-200"
+                        >
+                            Sign In
+                        </Link>
 
-                        <Link href="/studio" className="hover:text-pink-600 h-full flex items-center">Special Studio</Link>
-                        <Link href="/inspirations" className="hover:text-pink-600 h-full flex items-center">Inspirations</Link>
-                        <Link href="/how-it-works" className="hover:text-pink-600 h-full flex items-center">How It Works</Link>
-                        <Link href="/buy" className="hover:text-pink-600 h-full flex items-center">Buy Digital Graphics</Link>
-                        <Link href="/faqs" className="hover:text-pink-600 h-full flex items-center">FAQs</Link>
-                    </nav>
+                        {/* Join Button - Hidden on mobile */}
+                        <Link
+                            href="/auth?mode=register"
+                            className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-black bg-transparent border border-black rounded-md hover:bg-black hover:text-white transition-all duration-200"
+                        >
+                            Join
+                        </Link>
 
-                    {/* Mobile Menu Icon */}
-                    <button className="xl:hidden ml-auto text-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
-                    </button>
+                        {/* Mobile Menu Toggle */}
+                        <button
+                            className="lg:hidden p-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                            aria-label="Toggle mobile menu"
+                            aria-expanded={mobileMenuOpen}
+                        >
+                            {mobileMenuOpen ? (
+                                <X className="h-6 w-6" />
+                            ) : (
+                                <Menu className="h-6 w-6" />
+                            )}
+                        </button>
+                    </div>
                 </div>
-            </div>
+
+                {/* Mobile Menu */}
+                <div
+                    className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+                        }`}
+                >
+                    <div className="border-t border-gray-100 py-4 space-y-1">
+                        {navItems.map((item) => (
+                            <Link
+                                key={item.label}
+                                href={item.href}
+                                className="flex items-center justify-between px-4 py-3 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                <span>{item.label}</span>
+                                {item.badge && (
+                                    <span className="bg-black text-white text-[9px] font-semibold px-1.5 py-0.5 rounded-sm uppercase tracking-wide">
+                                        {item.badge}
+                                    </span>
+                                )}
+                            </Link>
+                        ))}
+
+                        {/* Mobile Auth Links */}
+                        <div className="pt-4 mt-4 border-t border-gray-100 space-y-2 px-4">
+                            <Link
+                                href="/auth"
+                                className="block w-full text-center py-2.5 text-sm font-medium text-gray-800 hover:text-gray-900"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                Sign In
+                            </Link>
+                            <Link
+                                href="/auth?mode=register"
+                                className="block w-full text-center py-2.5 text-sm font-medium text-black bg-transparent border border-black rounded-md hover:bg-black hover:text-white transition-all duration-200"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                Join
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         </header>
     );
 }
