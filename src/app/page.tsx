@@ -30,6 +30,11 @@ import hex5 from "../../public/feature-logos-hex-5.avif";
 import hex6 from "../../public/feature-logos-hex-6.avif";
 import hex7 from "../../public/feature-logos-hex-7.avif";
 import hex8 from "../../public/feature-logos-hex-8.avif";
+import catLogo from "../../public/cat-logo.avif";
+import catBusiness from "../../public/cat-business.avif";
+import catPackage from "../../public/cat-package.avif";
+import catWeb from "../../public/cat-web.avif";
+import catArt from "../../public/cat-art.avif";
 
 export default function Home() {
   // Carousel State
@@ -123,11 +128,11 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {[
-              { title: "Logo & Branding Design", img: "/cat-logo.avif" },
-              { title: "Business & Advertising", img: "/cat-business.avif" },
-              { title: "Packaging & Label", img: "/cat-package.avif" },
-              { title: "Website & App Design", img: "/cat-web.avif" },
-              { title: "Art & Illustration", img: "/cat-art.avif" },
+              { title: "Logo & Branding Design", img: catLogo },
+              { title: "Business & Advertising", img: catBusiness },
+              { title: "Packaging & Label", img: catPackage },
+              { title: "Website & App Design", img: catWeb },
+              { title: "Art & Illustration", img: catArt },
             ].map((item, index) => (
               <div key={index} className="group cursor-pointer">
                 <div className="aspect-square bg-gray-100 overflow-hidden rounded-md mb-3 shadow-sm group-hover:shadow-md transition-all">

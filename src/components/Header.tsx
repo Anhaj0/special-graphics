@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
+import logo from '../../public/logo.avif';
 
 // Navigation items configuration
 const navItems = [
@@ -27,7 +28,7 @@ export default function Header() {
                     <div className="flex-shrink-0">
                         <Link href="/" className="block">
                             <Image
-                                src="/logo.avif"
+                                src={logo}
                                 alt="Special Graphics"
                                 width={180}
                                 height={50}
