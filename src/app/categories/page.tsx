@@ -1,3 +1,4 @@
+// Categories page component
 import CategoriesPage from "@/components/CategoriesPage";
 
 export default function Categories() {
